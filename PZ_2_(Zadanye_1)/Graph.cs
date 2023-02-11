@@ -21,7 +21,6 @@ namespace PZ_2__Zadanye_1_
             Vector = new bool[size];
             for (int i = 0; i < size; i++) Vector[i] = false; // иниц-я вектора посещенных вершин
             Size = size;
-
         }
         public void Depth(int i) //i – вершина, с которой начинается обход
         {
