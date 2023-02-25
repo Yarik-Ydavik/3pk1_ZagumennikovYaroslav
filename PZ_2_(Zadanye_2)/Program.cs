@@ -45,8 +45,8 @@ class Dijkstra
 
             for (int v = 0; v < V; v++)
             {
-                // Обновляется distance[v], только если его нет в Vertexes
-                // Если существует палка от 
+                // Если существует палка от minDistance до v,
+                // а общая длина палки графа до v через minDistance меньше чем текущее значение distance[v]
                 if (!Vertexes[v] && graph[minDistance, v] != 0 && distance[minDistance] != int.MaxValue && distance[minDistance] + graph[minDistance, v] < distance[v])
                     distance[v] = distance[minDistance] + graph[minDistance, v];
             }
