@@ -81,7 +81,6 @@ class Program
             if (valuesУзлов[i] < 0) minusValue += 1;
             else plusValue += 1;
         }
-        Console.WriteLine("Задание 2: Среднее арифметическое значений информационных полей узлов дерева: {0}", result);
         Console.WriteLine("Количество узлов дерева с положительными значениями: {0}", plusValue);
         Console.WriteLine("Количество узлов дерева с отрицательными значениями: {0}", minusValue);
     }
