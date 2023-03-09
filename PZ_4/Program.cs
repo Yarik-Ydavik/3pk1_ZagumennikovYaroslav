@@ -1,57 +1,95 @@
-﻿
+﻿using System;
 
-using static Tree;
-
-public class Tree
+public class Node
 {
-    // подкласс "элемент дерева"
-    public class TreeNode
-    {
-        public int Value; // численное значение
-        public int Count = 0; // сколько раз было добавлено данное численное значение
-        public TreeNode Left; // левое поддерево
-        public TreeNode Right; // правое поддерево
-    }
-    public TreeNode Node; // экземпляр класса "элемент дерева"
+    public int value;
+    public Node left;
+    public Node right;
 
-}
-private void RCL(TreeNode node, ref string s, bool detailed)
-{
-    /*
-     Аргументы метода:
-     1. TreeNode node - текущий "элемент дерева" (ref  передача по ссылке)       
-     2. ref string s - строка, в которой накапливается результат (ref - передача по ссылке)
-    */
-    if (node != null)
+    public Node(int val)
     {
-        if (detailed) s += "    обходим правое поддерево" + Environment.NewLine;
-        RCL(node.Right, ref s, detailed); // обойти правое поддерево
-        if (detailed)
-            s += "    получили значение " + node.Value.ToString() + Environment.NewLine;
-        else
-            s += node.Value.ToString() + " "; // запомнить текущее значение
-        if (detailed) s += "    обходим левое поддерево" + Environment.NewLine;
-        RCL(node.Left, ref s, detailed); // обойти левое поддерево
+        value = val;
+        left = null;
+        right = null;
     }
-    else if (detailed) s += "    значение отсутствует - null" + Environment.NewLine;
 }
 
-class Program
+public class BinaryTree
+{
+    public Node root;
+
+    public BinaryTree()
+    {
+        root = null;
+    }
+
+    public void Insert(int val)
+    {
+        Node newNode = new Node(val);
+
+        if (root == null)
+        {
+            root = newNode;
+            return;
+        }
+
+        Node current = root;
+
+        while (true)
+        {
+            if (val < current.value)
+            {
+                if (current.left == null)
+                {
+                    current.left = newNode;
+                    break;
+                }
+                else
+                {
+                    current = current.left;
+                }
+            }
+            else
+            {
+                if (current.right == null)
+                {
+                    current.right = newNode;
+                    break;
+                }
+                else
+                {
+                    current = current.right;
+                }
+            }
+        }
+    }
+
+    public int Sum(Node node)
+    {
+        if (node == null)
+        {
+            return 0;
+        }
+
+        return node.value + Sum(node.left) + Sum(node.right);
+    }
+}
+
+public class Program
 {
     public static void Main()
     {
-        private void RCL(TreeNode node, ref string s, bool detailed);
-        if (node != null)
+        BinaryTree tree = new BinaryTree();
+
+        // заполнение дерева значениями от 10 до 1000
+        for (int i = 10; i <= 1000; i++)
         {
-            if (detailed) s += "    обходим правое поддерево" + Environment.NewLine;
-            RCL(node.Right, ref s, detailed); // обойти правое поддерево
-            if (detailed)
-                s += "    получили значение " + node.Value.ToString() + Environment.NewLine;
-            else
-                s += node.Value.ToString() + " "; // запомнить текущее значение
-            if (detailed) s += "    обходим левое поддерево" + Environment.NewLine;
-            RCL(node.Left, ref s, detailed); // обойти левое поддерево
+            tree.Insert(i);
         }
-        else if (detailed) s += "    значение отсутствует - null" + Environment.NewLine;
+
+        // подсчет суммы значений информационных полей дерева
+        int sum = tree.Sum(tree.root);
+
+        Console.WriteLine("Сумма значений информационных полей дерева: " + sum);
     }
 }
