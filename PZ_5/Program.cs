@@ -87,14 +87,6 @@ class Program
         Console.WriteLine("MyDate: {0}", myObj.MyDate);                // Объявление свойства MyDate для получения значения закрытого поля myDate
         Console.WriteLine("MyObj: {0}", myObj.MyObjToString);          // Объявление свойства MyObjToString для получения значения закрытого поля myObjToString
 
-        myObj.MyIntAsString = "123";
-        myObj.MyDateString = "2021-10-01";
-        myObj.MyObjToString = "World";
-
-        Console.WriteLine("MyInt: {0}", myObj.MyInt);                  // Использование свойства MyInt
-        Console.WriteLine("MyDate: {0}", myObj.MyDate);                // Использование свойства MyDate
-        Console.WriteLine("MyObj: {0}", myObj.MyObjToString);          // Использование свойства MyObjToString
-
 
         // ------------------------------------------------------------------------------------------------------------------------------------ 
         // Задание 1 - Интерфейс IClonable
