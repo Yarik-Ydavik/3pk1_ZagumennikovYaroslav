@@ -104,6 +104,7 @@ class Program
         if (Result == 0) Console.WriteLine("Объект 3 равен Объекту 4");
         else if (Result < 0) Console.WriteLine("Объект 3 меньше Объекта 4");
         else Console.WriteLine("Объект 3 больше Объекта 4");
+        Console.WriteLine(" ");
     }
 
 }
